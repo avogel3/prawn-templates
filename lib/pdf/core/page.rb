@@ -28,6 +28,17 @@ module PDF
         @stamp_dictionary  = nil
         @imported_page     = true
       end
+
+      def size
+        return @size if defined?(@size) && @size
+
+        case(layout)
+        when :portrait
+           dimensions[2,2]
+        when :landscape
+           dimensions[2,2].reverse
+        end
+      end
     end
   end
 end
